@@ -1,0 +1,22 @@
+server:
+  port: 81
+
+
+
+
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://121.196.18.70:8890;DatabaseName=erp_CRM_temp
+      username: zcy_CRM
+      password: zcy_erp_CRM
+
+mybatis-plus:
+  global-config:
+    db-config:
+      table-prefix:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
