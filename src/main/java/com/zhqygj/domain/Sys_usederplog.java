@@ -10,16 +10,20 @@ import lombok.Data;
  */
 @Data
 public class Sys_usederplog {
-    String clientname;
-    String softname;
-    String netip;
-    String servername;
-    String serverip;
-    String dataname;
-    String usedip;
-    String usedcode;
-    String hostname;
-    String usedmac;
-    String sqlversion;
-    String erpversion;
+    //@GeneratedValue(strategy= GenerationType.IDENTITY)
+    //@TableId(type= IdType.AUTO)
+//    @TableId(value ="id", type = IdType.AUTO)
+//    private Integer id;
+    private String clientname;
+    private String softname;
+    private String netip;
+    private String servername;
+    private String serverip;
+    private String dataname;
+    private String usedip;
+    private String usedcode;
+    private String hostname;
+    private String usedmac;
+    private String sqlversion;
+    private String erpversion;
 }

@@ -25,9 +25,10 @@ public class Sys_usederplogController {
 
     @PostMapping("save")
     public R save(@RequestBody Sys_usederplog sys_Usederplog){
-        final boolean save = sys_usederplogService.save(sys_Usederplog);
-
-        return save ? R.ok(): R.faile("caozuoshibai");
+        return new R(true,sys_usederplogService.updateById(sys_Usederplog));
+//        final boolean save = sys_usederplogService.save(sys_Usederplog);
+//
+//        return save ? R.ok(): R.faile("caozuoshibai");
     }
     @PutMapping
     public R update(@RequestBody Sys_usederplog sys_Usederplog){
