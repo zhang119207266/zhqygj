@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhqygj.mapper.IPrgBusinessMapper">
+
+    <resultMap id="prgBusiness" type="com.zhqygj.domain.PrgBusiness">
+        <id column="BusinessCode" property="businessCode"/>
+        <result column="BillDate" property="billDate" />
+        <result column="ModeCode" property="modeCode"/>
+    </resultMap>
+
+    <resultMap id="prgBusinessDetail" type="com.zhqygj.domain.PrgBusiness" extends="prgBusiness">
+        <collection property="businessDetails" ofType="com.zhqygj.domain.PrgBusinessDetail">
+            <id column="DetailNo" property="detailNo"/>
+            <result column="BusinessCode" property="businessCode"/>
+            <result column="proCode" property="proCode"/>
+        </collection>
+    </resultMap>
+
+    <select id="business" resultMap="prgBusinessDetail">
+        SELECT
+            t.BusinessCode,
+            t.BillDate,
+            t.ModeCode,
+            t1.BusinessCode,
+            t1.DetailNo,
+            t1.proCode
+        FROM
+            prg_business t
+                INNER JOIN prg_businessDetail t1 ON t.BusinessCode = t1.BusinessCode
+        WHERE
+            t.BusinessCode = #{bCode}
+    </select>
+</mapper>
