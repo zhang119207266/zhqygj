@@ -5,18 +5,42 @@ server:
 
 
 spring:
+  profiles:
+    active: dev
   datasource:
     druid:
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
       url: jdbc:sqlserver://121.196.18.70:8890;DatabaseName=erp_CRM_temp
       username: zcy_CRM
       password: zcy_erp_CRM
-
+      initial-size: 5
+      min-idle: 10
+      max-active: 20
+      time-between-eviction-runs-millis: 5000
+      min-evictable-idle-time-millis: 600000
+      max-evictable-idle-time-millis: 900000
+      validation-query: select 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      keep-alive: true
+      filter:
+        stat:
+          enabled: true
+          db-type: sqlserver
+          log-slow-sql: true
+          slow-sql-millis: 3000
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        reset-enable: true
+        allow: 127.0.0.1
 mybatis-plus:
   global-config:
     db-config:
       table-prefix:
   configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
+    log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
 
